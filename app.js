@@ -174,18 +174,26 @@ function renderStats() {
     container.innerHTML = '';
 
     const total = AppState.projects.length;
-    const completed = AppState.projects.filter(p => p.status === 'completed').length;
-    const inProgress = AppState.projects.filter(p => p.status === 'in-progress').length;
-    const atRisk = AppState.projects.filter(p => p.status === 'at-risk' || p.status === 'delayed').length;
+    const published = AppState.projects.filter(p => p.status === 'published').length;
+const accepted = AppState.projects.filter(p => p.status === 'accepted').length;
+const underReview = AppState.projects.filter(p =>
+    ['submitted','under-review','revision'].includes(p.status)
+).length;
+
+const writing = AppState.projects.filter(p =>
+    ['idea','research','writing','internal-review','ready-to-submit'].includes(p.status)
+).length;
+
     const avgProgress = total > 0 ? Math.round(AppState.projects.reduce((sum, p) => sum + p.progress, 0) / total) : 0;
 
     const stats = [
-        { label: 'Total Projects', value: total },
-        { label: 'Completed', value: completed },
-        { label: 'In Progress', value: inProgress },
-        { label: 'At Risk', value: atRisk },
-        { label: 'Avg Progress', value: `${avgProgress}%` }
-    ];
+    { label: 'Total Projects', value: total },
+    { label: 'Writing Phase', value: writing },
+    { label: 'Under Review', value: underReview },
+    { label: 'Accepted', value: accepted },
+    { label: 'Published', value: published }
+];
+
 
     stats.forEach(stat => {
         const card = document.createElement('div');
