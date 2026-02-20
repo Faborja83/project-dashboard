@@ -2,29 +2,74 @@ async function loadData() {
   const response = await fetch("data/projects.json");
   const data = await response.json();
 
-  renderStats(data.projects);
+  const papers = data.projects.flatMap(p =>
+    p.papers.map(x => ({ project: p.name, ...x }))
+  );
+
+  renderPlanner(papers);
+  renderStats(papers);
+  renderPipeline(papers);
   renderProjects(data.projects);
-  renderTimeline(data.projects);
 }
 
-function renderStats(projects) {
-  const papers = projects.flatMap(p => p.papers);
+function renderPlanner(papers) {
+  const now = new Date();
 
-  const total = papers.length;
-  const completed = papers.filter(p => p.progress === 100).length;
-  const writing = papers.filter(p =>
-    ["Writing","Research","Literature Review","Modeling"].includes(p.status)
+  const sorted = papers
+    .filter(p => p.deadline)
+    .sort((a,b) => new Date(a.deadline) - new Date(b.deadline));
+
+  const top = sorted[0];
+
+  const overdue =
+    new Date(top.deadline) < now ? "overdue" : "";
+
+  document.getElementById("planner").innerHTML = `
+    <div class="card ${overdue}">
+      <h2>🔥 Work on THIS Next</h2>
+      <strong>${top.title}</strong><br>
+      Project: ${top.project}<br>
+      Status: ${top.status}<br>
+      Deadline: ${top.deadline}
+    </div>
+  `;
+}
+
+function renderStats(papers) {
+  const underReview = papers.filter(p =>
+    p.submissions.some(s => s.decision === "Under Review")
   ).length;
-  const review = papers.filter(p =>
-    ["Under Review","Internal Review"].includes(p.status)
+
+  const accepted = papers.filter(p =>
+    p.submissions.some(s => s.decision === "Accepted")
   ).length;
 
   document.getElementById("stats").innerHTML = `
-    <div class="stat">Total Items: ${total}</div>
-    <div class="stat">Writing Phase: ${writing}</div>
-    <div class="stat">Under Review: ${review}</div>
-    <div class="stat">Completed: ${completed}</div>
+    <span class="stat">Total Papers: ${papers.length}</span>
+    <span class="stat">Under Review: ${underReview}</span>
+    <span class="stat">Accepted: ${accepted}</span>
   `;
+}
+
+function renderPipeline(papers) {
+  const container = document.getElementById("pipeline");
+  container.innerHTML = "";
+
+  papers.forEach(p => {
+    p.submissions.forEach(s => {
+      const div = document.createElement("div");
+      div.className = "card";
+
+      div.innerHTML = `
+        <strong>${p.title}</strong><br>
+        Journal: ${s.journal}<br>
+        Submitted: ${s.submitted}<br>
+        Decision: ${s.decision}
+      `;
+
+      container.appendChild(div);
+    });
+  });
 }
 
 function renderProjects(projects) {
@@ -33,20 +78,18 @@ function renderProjects(projects) {
 
   projects.forEach(project => {
     const div = document.createElement("div");
-    div.className = "project";
+    div.className = "card";
 
     div.innerHTML = `<h3>${project.name}</h3>`;
 
     project.papers.forEach(p => {
       div.innerHTML += `
-        <div class="paper">
+        <div class="submission ${p.priority.toLowerCase()}">
           <strong>${p.title}</strong><br>
           Status: ${p.status}<br>
-          Target: ${p.end}<br>
-
-          <div class="bar">
-            <div class="fill" style="width:${p.progress}%"></div>
-          </div>
+          Priority: ${p.priority}<br>
+          Deadline: ${p.deadline}<br>
+          Progress: ${p.progress}%
         </div>
       `;
     });
@@ -54,63 +97,5 @@ function renderProjects(projects) {
     container.appendChild(div);
   });
 }
-
-function renderTimeline(projects) {
-  const container = document.getElementById("timeline");
-  container.innerHTML = "";
-
-  const items = projects.flatMap(p =>
-    p.papers.map(x => ({ project: p.name, ...x }))
-  );
-
-  // Keep only items with valid dates
-  const valid = items.filter(i =>
-    i.start && i.end &&
-    !isNaN(new Date(i.start)) &&
-    !isNaN(new Date(i.end))
-  );
-
-  if (valid.length === 0) {
-    container.innerHTML = "<p>No valid timeline data.</p>";
-    return;
-  }
-
-  const minDate = new Date(
-    Math.min(...valid.map(i => new Date(i.start)))
-  );
-
-  const maxDate = new Date(
-    Math.max(...valid.map(i => new Date(i.end)))
-  );
-
-  const totalDuration = maxDate - minDate;
-
-  valid.forEach(item => {
-    const startOffset =
-      (new Date(item.start) - minDate) / totalDuration * 100;
-
-    const duration =
-      (new Date(item.end) - new Date(item.start)) /
-      totalDuration * 100;
-
-    const row = document.createElement("div");
-    row.className = "timeline-row";
-
-    row.innerHTML = `
-      <div class="timeline-label">
-        ${item.title} (${item.project})
-      </div>
-      <div class="timeline-bar">
-        <div class="timeline-fill"
-             style="margin-left:${startOffset}%;
-                    width:${Math.max(duration,1)}%;">
-        </div>
-      </div>
-    `;
-
-    container.appendChild(row);
-  });
-}
-
 
 loadData();
