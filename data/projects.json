@@ -8,28 +8,96 @@
           "id": "capnet-lit",
           "title": "Literature Review & Citation Review",
           "type": "Research Task",
-          "journal": "",
           "status": "Literature Review",
-          "start": "2026-02-01",
-          "end": "2026-04-30",
-          "progress": 25
+          "priority": "Medium",
+          "deadline": "2026-04-30",
+          "progress": 25,
+          "submissions": []
         }
       ]
     },
 
     {
-      "id": "ideas-channel",
-      "name": "Ideas Across the Channel",
+      "id": "ideas-channel-II",
+      "name": "Ideas Across the Channel II",
       "papers": [
         {
           "id": "ideas-train-model",
           "title": "Train Model",
           "type": "Research Task",
-          "journal": "",
           "status": "Modeling",
-          "start": "2026-02-01",
-          "end": "2026-05-15",
-          "progress": 20
+          "priority": "Medium",
+          "deadline": "2026-05-15",
+          "progress": 20,
+          "submissions": []
+        }
+      ]
+    },
+
+    {
+      "id": "ideas-channel-I",
+      "name": "Ideas Across the Channel I",
+      "papers": [
+        {
+          "id": "ideas-channel-paper",
+          "title": "Ideas Across the Channel I",
+          "type": "Journal Article",
+          "status": "Under Review",
+          "priority": "High",
+          "deadline": "",
+          "progress": 100,
+
+          "submissions": [
+            {
+              "journal": "European Journal of the History of Economic Thought",
+              "submitted": "2025-10-22",
+              "decision": "Under Review",
+              "history": [
+                {
+                  "date": "2025-10-22",
+                  "event": "Submitted"
+                },
+                {
+                  "date": "2025-11-19",
+                  "event": "With Editor"
+                },
+                {
+                  "date": "2025-11-19",
+                  "event": "Out for Review"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ecuador-banking-crisis",
+      "name": "Government Finance, Export Prohibition, and Banking Panic",
+      "papers": [
+        {
+          "id": "ecuador-crisis-paper",
+          "title": "Ecuador's First Banking Crisis, 1868–1875",
+          "type": "Journal Article",
+          "status": "Under Review",
+          "priority": "High",
+          "deadline": "",
+          "progress": 100,
+
+          "submissions": [
+            {
+              "journal": "Journal of Economic History",
+              "submitted": "2026-02-09",
+              "decision": "Under Review",
+              "history": [
+                {
+                  "date": "2026-02-09",
+                  "event": "Submitted"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -42,21 +110,21 @@
           "id": "fragility-model",
           "title": "Model Development",
           "type": "Research Task",
-          "journal": "",
           "status": "Research",
-          "start": "2026-01-15",
-          "end": "2026-07-01",
-          "progress": 35
+          "priority": "High",
+          "deadline": "2026-07-01",
+          "progress": 35,
+          "submissions": []
         },
         {
           "id": "fragility-empirics",
           "title": "Review Empirics",
           "type": "Research Task",
-          "journal": "",
           "status": "Literature Review",
-          "start": "2026-02-01",
-          "end": "2026-05-01",
-          "progress": 30
+          "priority": "Medium",
+          "deadline": "2026-05-01",
+          "progress": 30,
+          "submissions": []
         }
       ]
     },
@@ -69,21 +137,21 @@
           "id": "ai-review",
           "title": "Review Overreach",
           "type": "Research Task",
-          "journal": "",
           "status": "Literature Review",
-          "start": "2026-02-15",
-          "end": "2026-04-30",
-          "progress": 15
+          "priority": "Medium",
+          "deadline": "2026-04-30",
+          "progress": 15,
+          "submissions": []
         },
         {
           "id": "ai-circulate",
           "title": "Circulate Draft",
           "type": "Paper Draft",
-          "journal": "",
           "status": "Internal Review",
-          "start": "2026-05-01",
-          "end": "2026-06-15",
-          "progress": 0
+          "priority": "Medium",
+          "deadline": "2026-06-15",
+          "progress": 0,
+          "submissions": []
         }
       ]
     },
@@ -96,11 +164,11 @@
           "id": "citation-refine",
           "title": "Refine Analysis",
           "type": "Research Task",
-          "journal": "",
           "status": "Research",
-          "start": "2026-03-01",
-          "end": "2026-06-01",
-          "progress": 10
+          "priority": "Low",
+          "deadline": "2026-06-01",
+          "progress": 10,
+          "submissions": []
         }
       ]
     },
@@ -113,21 +181,21 @@
           "id": "monetary-model-review",
           "title": "Model Review",
           "type": "Research Task",
-          "journal": "",
           "status": "Research",
-          "start": "2026-02-01",
-          "end": "2026-07-01",
-          "progress": 40
+          "priority": "High",
+          "deadline": "2026-07-01",
+          "progress": 40,
+          "submissions": []
         },
         {
           "id": "monetary-general-ref",
           "title": "General Reference Model (32k papers)",
           "type": "Data/Method Project",
-          "journal": "",
           "status": "Research",
-          "start": "2026-01-01",
-          "end": "2026-12-31",
-          "progress": 15
+          "priority": "Medium",
+          "deadline": "2026-12-31",
+          "progress": 15,
+          "submissions": []
         }
       ]
     },
@@ -140,11 +208,11 @@
           "id": "golden-model-review",
           "title": "Model Review",
           "type": "Research Task",
-          "journal": "",
           "status": "Research",
-          "start": "2026-02-01",
-          "end": "2026-06-01",
-          "progress": 10
+          "priority": "Low",
+          "deadline": "2026-06-01",
+          "progress": 10,
+          "submissions": []
         }
       ]
     },
@@ -157,11 +225,11 @@
           "id": "cafe-development",
           "title": "Desarrollar tareas asistente",
           "type": "Project Development",
-          "journal": "",
           "status": "Planning",
-          "start": "2026-02-01",
-          "end": "2026-05-01",
-          "progress": 5
+          "priority": "Low",
+          "deadline": "2026-05-01",
+          "progress": 5,
+          "submissions": []
         }
       ]
     }
