@@ -580,3 +580,37 @@ function showToast(message, type = 'info') {
         toast.classList.remove('show');
     }, 3000);
 }
+// ===== Academic Research OS Loader =====
+
+async function loadAcademicProjects() {
+  try {
+    const response = await fetch("data/projects.json");
+    const data = await response.json();
+
+    console.log("Academic projects loaded:", data);
+
+    // OPTIONAL: replace dashboard projects
+    if (typeof AppState !== "undefined") {
+      AppState.projects = data.projects.flatMap(p =>
+        p.papers.map(x => ({
+          id: x.id,
+          name: x.title,
+          description: p.name,
+          startDate: x.start,
+          endDate: x.end,
+          progress: x.progress,
+          status: x.status.toLowerCase().replace(/\s+/g, "-"),
+          link: ""
+        }))
+      );
+
+      renderDashboard();
+    }
+
+  } catch (error) {
+    console.error("Failed to load academic data:", error);
+  }
+}
+
+// Load automatically when page opens
+window.addEventListener("load", loadAcademicProjects);
