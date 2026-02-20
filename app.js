@@ -63,11 +63,29 @@ function renderTimeline(projects) {
     p.papers.map(x => ({ project: p.name, ...x }))
   );
 
-  const minDate = new Date(Math.min(...items.map(i => new Date(i.start))));
-  const maxDate = new Date(Math.max(...items.map(i => new Date(i.end))));
+  // Keep only items with valid dates
+  const valid = items.filter(i =>
+    i.start && i.end &&
+    !isNaN(new Date(i.start)) &&
+    !isNaN(new Date(i.end))
+  );
+
+  if (valid.length === 0) {
+    container.innerHTML = "<p>No valid timeline data.</p>";
+    return;
+  }
+
+  const minDate = new Date(
+    Math.min(...valid.map(i => new Date(i.start)))
+  );
+
+  const maxDate = new Date(
+    Math.max(...valid.map(i => new Date(i.end)))
+  );
+
   const totalDuration = maxDate - minDate;
 
-  items.forEach(item => {
+  valid.forEach(item => {
     const startOffset =
       (new Date(item.start) - minDate) / totalDuration * 100;
 
@@ -85,7 +103,7 @@ function renderTimeline(projects) {
       <div class="timeline-bar">
         <div class="timeline-fill"
              style="margin-left:${startOffset}%;
-                    width:${duration}%;">
+                    width:${Math.max(duration,1)}%;">
         </div>
       </div>
     `;
@@ -93,5 +111,6 @@ function renderTimeline(projects) {
     container.appendChild(row);
   });
 }
+
 
 loadData();
