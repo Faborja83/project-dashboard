@@ -1,0 +1,169 @@
+{
+  "projects": [
+    {
+      "id": "capital-networks",
+      "name": "Capital in Networks",
+      "papers": [
+        {
+          "id": "capnet-lit",
+          "title": "Literature Review & Citation Review",
+          "type": "Research Task",
+          "journal": "",
+          "status": "Literature Review",
+          "start": "2026-02-01",
+          "end": "2026-04-30",
+          "progress": 25
+        }
+      ]
+    },
+
+    {
+      "id": "ideas-channel",
+      "name": "Ideas Across the Channel",
+      "papers": [
+        {
+          "id": "ideas-train-model",
+          "title": "Train Model",
+          "type": "Research Task",
+          "journal": "",
+          "status": "Modeling",
+          "start": "2026-02-01",
+          "end": "2026-05-15",
+          "progress": 20
+        }
+      ]
+    },
+
+    {
+      "id": "bank-fragility",
+      "name": "Bank Risk–Fragility",
+      "papers": [
+        {
+          "id": "fragility-model",
+          "title": "Model Development",
+          "type": "Research Task",
+          "journal": "",
+          "status": "Research",
+          "start": "2026-01-15",
+          "end": "2026-07-01",
+          "progress": 35
+        },
+        {
+          "id": "fragility-empirics",
+          "title": "Review Empirics",
+          "type": "Research Task",
+          "journal": "",
+          "status": "Literature Review",
+          "start": "2026-02-01",
+          "end": "2026-05-01",
+          "progress": 30
+        }
+      ]
+    },
+
+    {
+      "id": "ai-productivity",
+      "name": "AI Productivity",
+      "papers": [
+        {
+          "id": "ai-review",
+          "title": "Review Overreach",
+          "type": "Research Task",
+          "journal": "",
+          "status": "Literature Review",
+          "start": "2026-02-15",
+          "end": "2026-04-30",
+          "progress": 15
+        },
+        {
+          "id": "ai-circulate",
+          "title": "Circulate Draft",
+          "type": "Paper Draft",
+          "journal": "",
+          "status": "Internal Review",
+          "start": "2026-05-01",
+          "end": "2026-06-15",
+          "progress": 0
+        }
+      ]
+    },
+
+    {
+      "id": "citation-curves",
+      "name": "Citation Curves",
+      "papers": [
+        {
+          "id": "citation-refine",
+          "title": "Refine Analysis",
+          "type": "Research Task",
+          "journal": "",
+          "status": "Research",
+          "start": "2026-03-01",
+          "end": "2026-06-01",
+          "progress": 10
+        }
+      ]
+    },
+
+    {
+      "id": "monetary-production",
+      "name": "Monetary Production Theory",
+      "papers": [
+        {
+          "id": "monetary-model-review",
+          "title": "Model Review",
+          "type": "Research Task",
+          "journal": "",
+          "status": "Research",
+          "start": "2026-02-01",
+          "end": "2026-07-01",
+          "progress": 40
+        },
+        {
+          "id": "monetary-general-ref",
+          "title": "General Reference Model (32k papers)",
+          "type": "Data/Method Project",
+          "journal": "",
+          "status": "Research",
+          "start": "2026-01-01",
+          "end": "2026-12-31",
+          "progress": 15
+        }
+      ]
+    },
+
+    {
+      "id": "golden-lessons",
+      "name": "Golden Lessons",
+      "papers": [
+        {
+          "id": "golden-model-review",
+          "title": "Model Review",
+          "type": "Research Task",
+          "journal": "",
+          "status": "Research",
+          "start": "2026-02-01",
+          "end": "2026-06-01",
+          "progress": 10
+        }
+      ]
+    },
+
+    {
+      "id": "cafe-galarass",
+      "name": "Café Galarass",
+      "papers": [
+        {
+          "id": "cafe-development",
+          "title": "Desarrollar tareas asistente",
+          "type": "Project Development",
+          "journal": "",
+          "status": "Planning",
+          "start": "2026-02-01",
+          "end": "2026-05-01",
+          "progress": 5
+        }
+      ]
+    }
+  ]
+}
