@@ -1,0 +1,45 @@
+.cv-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+h2 {
+    font-size: 2em;
+    color: #444;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #555;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .cv-container {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    h3 {
+        font-size: 1.2em;
+    }
+}
